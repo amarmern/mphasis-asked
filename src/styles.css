@@ -1,0 +1,9 @@
+body {
+  font-family: sans-serif;
+}
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
