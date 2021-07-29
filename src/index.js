@@ -50,6 +50,21 @@ const myobj = {
 
 myobj.sayTitle();
 
+
+//solution
+
+let myobj = {
+  title: "hello",
+  sayTitle: function () {
+    setTimeout(() => {
+      console.log(this.title);
+    }, 0);
+  }
+};
+myobj.sayTitle();
+
+///
+
 let a = [1, 2, 3];
 let b = [...a, 4];
 console.log(b);
@@ -57,25 +72,24 @@ console.log(b);
 
 
 ///
-function Animal() {
-  constructor(name){
-  this.name =name,
-  }
-  Animal.prototype.Walk = ()=>{
-  console.log("Walking")
-  }
-  Animal.prototype.bark = () {
-  console.log("barking")
-  }
-  
-  }
-  
-  function Dog() {
-  Dog.calls(this,Animal);
-  }
-  
-  Animal.prototype = object.create(Dog.prototype);
-  
-  var bruno = new Dog("Bruno");
-  bruno.walk(); // Bruno is walking // Animal
-  bruno.bark(); // Bruno is barking // Dog
+function Animal(name) {
+  this.name = name;
+
+  Animal.prototype.walk = () => {
+    console.log(this.name, " is Walking");
+  };
+  Animal.prototype.bark = function () {
+    console.log(this.name, " is barking");
+  };
+}
+
+function Dog(...name) {
+  Animal.apply(this,name)
+}
+
+Dog.prototype = Object.create(Animal.prototype);
+
+var bruno = new Dog("Bruno");
+bruno.walk(); // Bruno is walking // Animal
+bruno.bark(); // Bruno is barking // Dog
+
