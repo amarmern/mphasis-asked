@@ -53,3 +53,29 @@ myobj.sayTitle();
 let a = [1, 2, 3];
 let b = [...a, 4];
 console.log(b);
+
+
+
+///
+function Animal() {
+  constructor(name){
+  this.name =name,
+  }
+  Animal.prototype.Walk = ()=>{
+  console.log("Walking")
+  }
+  Animal.prototype.bark = () {
+  console.log("barking")
+  }
+  
+  }
+  
+  function Dog() {
+  Dog.calls(this,Animal);
+  }
+  
+  Animal.prototype = object.create(Dog.prototype);
+  
+  var bruno = new Dog("Bruno");
+  bruno.walk(); // Bruno is walking // Animal
+  bruno.bark(); // Bruno is barking // Dog
