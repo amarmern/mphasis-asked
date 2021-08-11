@@ -23,33 +23,43 @@ import "./styles.css";
 // //   </ul>
 // // </div>
 // // `;
-// handleLogin();
-
-// function handleLogin() {
-//   let user = document.getElementById("usr")
-//   let password = document.getElementById("Pass")
-//   if(!(user && password)){
-//     alert("Please enter the user or pssword")
-//   }
-//   console.log("events");
-// }
 
 ///add event handler (click event handler in js)
 
 //addEventListener --> approch
 
-const myobj = {
-  title: "hello",
+const form = document.getElementById("signup");
+form.addEventListener("submit", function (event) {
+  // stop form submission
+  event.preventDefault();
 
-  sayTitle: function () {
-    setTimeout(function () {
-      console.log(this.title);
-    }, 0);
+  // validate the form
+
+  // // if valid, submit the form.
+  // console.log(event.target["name"].value);
+  // console.log(event.target["email"].value);
+
+  var elements = document.getElementById("signup").elements;
+  var obj = {};
+  for (var i = 0; i < elements.length; i++) {
+    var item = elements.item(i);
+    obj[item.name] = item.value;
   }
-};
 
-myobj.sayTitle();
+  console.log(JSON.stringify(obj));
+});
 
+// const myobj = {
+//   title: "hello",
+
+//   sayTitle: function () {
+//     setTimeout(function () {
+//       console.log(this.title);
+//     }, 0);
+//   }
+// };
+
+// myobj.sayTitle();
 
 //solution
 
@@ -69,8 +79,6 @@ let a = [1, 2, 3];
 let b = [...a, 4];
 console.log(b);
 
-
-
 ///
 function Animal(name) {
   this.name = name;
@@ -82,9 +90,8 @@ function Animal(name) {
     console.log(this.name, " is barking");
   };
 }
-
 function Dog(...name) {
-  Animal.apply(this,name)
+  Animal.apply(this, name);
 }
 
 Dog.prototype = Object.create(Animal.prototype);
@@ -92,4 +99,3 @@ Dog.prototype = Object.create(Animal.prototype);
 var bruno = new Dog("Bruno");
 bruno.walk(); // Bruno is walking // Animal
 bruno.bark(); // Bruno is barking // Dog
-
